@@ -1,0 +1,140 @@
+src/Entity/Hero.java:1:	Package name contains upper case characters
+src/Entity/Hero.java:3:	Avoid short class names like Hero
+src/Entity/Hero.java:3:	headerCommentRequirement Required
+src/Entity/Hero.java:5:	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/Entity/Hero.java:5:	fieldCommentRequirement Required
+src/Entity/Hero.java:6:	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/Entity/Hero.java:6:	fieldCommentRequirement Required
+src/Entity/Hero.java:7:	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/Entity/Hero.java:7:	fieldCommentRequirement Required
+src/Entity/Hero.java:9:	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/Entity/Hero.java:9:	fieldCommentRequirement Required
+src/Entity/Hero.java:12:	It is a good practice to call super() in a constructor
+src/Entity/Hero.java:12:	Parameter 'combat' is not assigned and could be declared final
+src/Entity/Hero.java:12:	Parameter 'intelligence' is not assigned and could be declared final
+src/Entity/Hero.java:12:	Parameter 'job' is not assigned and could be declared final
+src/Entity/Hero.java:12:	Parameter 'maturity' is not assigned and could be declared final
+src/Entity/Hero.java:12:	Parameter 'name' is not assigned and could be declared final
+src/Entity/Hero.java:12:	Parameter 'personality' is not assigned and could be declared final
+src/Entity/Hero.java:12:	Parameter 'skill' is not assigned and could be declared final
+src/Entity/Hero.java:12:	publicMethodCommentRequirement Required
+src/Entity/Mob.java:1:	Package name contains upper case characters
+src/Entity/Mob.java:3:	Avoid short class names like Mob
+src/Entity/Mob.java:3:	Each class should declare at least one constructor
+src/Entity/Mob.java:3:	headerCommentRequirement Required
+src/Entity/Mob.java:5:	fieldCommentRequirement Required
+src/Entity/Mob.java:6:	fieldCommentRequirement Required
+src/Entity/Mob.java:7:	fieldCommentRequirement Required
+src/Game.java:4:	All classes and interfaces must belong to a named package
+src/Game.java:4:	Avoid short class names like Game
+src/Game.java:4:	headerCommentRequirement Required
+src/Game.java:6:	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/Game.java:6:	Use explicit scoping instead of the default package private level
+src/Game.java:6:	fieldCommentRequirement Required
+src/Game.java:10:	Consider using varargs for methods or constructors which take an array the last parameter.
+src/Game.java:10:	Parameter 'args' is not assigned and could be declared final
+src/Game.java:10:	publicMethodCommentRequirement Required
+src/Game.java:12:	Local variable 'game' could be declared final
+src/Graphics/GameScreen.java:1:	Package name contains upper case characters
+src/Graphics/GameScreen.java:10:	Avoid unused imports such as 'Entity.Hero'
+src/Graphics/GameScreen.java:16:	headerCommentRequirement Required
+src/Graphics/GameScreen.java:19:	fieldCommentRequirement Required
+src/Graphics/GameScreen.java:20:	Use explicit scoping instead of the default package private level
+src/Graphics/GameScreen.java:20:	fieldCommentRequirement Required
+src/Graphics/GameScreen.java:21:	fieldCommentRequirement Required
+src/Graphics/GameScreen.java:22:	fieldCommentRequirement Required
+src/Graphics/GameScreen.java:23:	fieldCommentRequirement Required
+src/Graphics/GameScreen.java:24:	fieldCommentRequirement Required
+src/Graphics/GameScreen.java:25:	fieldCommentRequirement Required
+src/Graphics/GameScreen.java:27:	Possible unsafe assignment to a non-final static field in a constructor.
+src/Graphics/GameScreen.java:27:	fieldCommentRequirement Required
+src/Graphics/GameScreen.java:28:	Possible unsafe assignment to a non-final static field in a constructor.
+src/Graphics/GameScreen.java:28:	fieldCommentRequirement Required
+src/Graphics/GameScreen.java:29:	Avoid excessively long variable names like teamOverviewScreen
+src/Graphics/GameScreen.java:29:	Possible unsafe assignment to a non-final static field in a constructor.
+src/Graphics/GameScreen.java:29:	fieldCommentRequirement Required
+src/Graphics/GameScreen.java:30:	Possible unsafe assignment to a non-final static field in a constructor.
+src/Graphics/GameScreen.java:30:	fieldCommentRequirement Required
+src/Graphics/GameScreen.java:32:	fieldCommentRequirement Required
+src/Graphics/GameScreen.java:36:	publicMethodCommentRequirement Required
+src/Graphics/GameScreen.java:46:	Local variable 'contentPanel' could be declared final
+src/Graphics/ImageLoader.java:1:	Package name contains upper case characters
+src/Graphics/ImageLoader.java:5:	Each class should declare at least one constructor
+src/Graphics/ImageLoader.java:5:	headerCommentRequirement Required
+src/Graphics/ImageLoader.java:7:	Parameter 'path' is not assigned and could be declared final
+src/Graphics/ImageLoader.java:7:	publicMethodCommentRequirement Required
+src/Graphics/ImageLoader.java:9:	Local variable 'imgURL' could be declared final
+src/Graphics/ImageLoader.java:9:	Potential violation of Law of Demeter (method chain calls)
+src/Graphics/ImageLoader.java:11:	Avoid if (x != y) ..; else ..;
+src/Graphics/ImageLoader.java:12:	A method should have only one exit point, and that should be the last statement in the method
+src/Graphics/ImageLoader.java:14:	System.err.println is used
+src/Graphics/Screens/OptionsScreen.java:1:	Package name contains upper case characters
+src/Graphics/Screens/OptionsScreen.java:7:	headerCommentRequirement Required
+src/Graphics/Screens/OptionsScreen.java:10:	fieldCommentRequirement Required
+src/Graphics/Screens/OptionsScreen.java:12:	publicMethodCommentRequirement Required
+src/Graphics/Screens/StartScreen.java:1:	Package name contains upper case characters
+src/Graphics/Screens/StartScreen.java:18:	headerCommentRequirement Required
+src/Graphics/Screens/StartScreen.java:20:	fieldCommentRequirement Required
+src/Graphics/Screens/StartScreen.java:21:	Avoid variables with short names like c
+src/Graphics/Screens/StartScreen.java:21:	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/Graphics/Screens/StartScreen.java:21:	Use explicit scoping instead of the default package private level
+src/Graphics/Screens/StartScreen.java:21:	fieldCommentRequirement Required
+src/Graphics/Screens/StartScreen.java:22:	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/Graphics/Screens/StartScreen.java:22:	Use explicit scoping instead of the default package private level
+src/Graphics/Screens/StartScreen.java:22:	fieldCommentRequirement Required
+src/Graphics/Screens/StartScreen.java:23:	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/Graphics/Screens/StartScreen.java:23:	fieldCommentRequirement Required
+src/Graphics/Screens/StartScreen.java:24:	fieldCommentRequirement Required
+src/Graphics/Screens/StartScreen.java:25:	fieldCommentRequirement Required
+src/Graphics/Screens/StartScreen.java:26:	fieldCommentRequirement Required
+src/Graphics/Screens/StartScreen.java:28:	publicMethodCommentRequirement Required
+src/Graphics/Screens/StartScreen.java:44:	Local variable 'upperPanel' could be declared final
+src/Graphics/Screens/StartScreen.java:48:	Local variable 'upperPanelLabel' could be declared final
+src/Graphics/Screens/StartScreen.java:55:	Local variable 'middlePanel' could be declared final
+src/Graphics/Screens/StartScreen.java:60:	Local variable 'middlePanelLabel' could be declared final
+src/Graphics/Screens/StartScreen.java:70:	Avoid variables with short names like e
+src/Graphics/Screens/StartScreen.java:70:	Parameter 'e' is not assigned and could be declared final
+src/Graphics/Screens/StartScreen.java:70:	publicMethodCommentRequirement Required
+src/Graphics/Screens/StartScreen.java:73:	Potential violation of Law of Demeter (static property access)
+src/Graphics/Screens/StartScreen.java:77:	Local variable 'loadButton' could be declared final
+src/Graphics/Screens/StartScreen.java:81:	Local variable 'optionsButton' could be declared final
+src/Graphics/Screens/StartScreen.java:87:	Avoid variables with short names like e
+src/Graphics/Screens/StartScreen.java:87:	Parameter 'e' is not assigned and could be declared final
+src/Graphics/Screens/StartScreen.java:87:	publicMethodCommentRequirement Required
+src/Graphics/Screens/StartScreen.java:90:	Potential violation of Law of Demeter (static property access)
+src/Graphics/Screens/StartScreen.java:94:	Local variable 'creditsButton' could be declared final
+src/Graphics/Screens/StartScreen.java:103:	Local variable 'lowerPanel' could be declared final
+src/Graphics/Screens/StartScreen.java:107:	Local variable 'lowerPanelLabel' could be declared final
+src/Graphics/Screens/TeamOverviewScreen.java:1:	Package name contains upper case characters
+src/Graphics/Screens/TeamOverviewScreen.java:11:	headerCommentRequirement Required
+src/Graphics/Screens/TeamOverviewScreen.java:13:	fieldCommentRequirement Required
+src/Graphics/Screens/TeamOverviewScreen.java:14:	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/Graphics/Screens/TeamOverviewScreen.java:14:	Use explicit scoping instead of the default package private level
+src/Graphics/Screens/TeamOverviewScreen.java:14:	fieldCommentRequirement Required
+src/Graphics/Screens/TeamOverviewScreen.java:17:	publicMethodCommentRequirement Required
+src/Graphics/Screens/TeamOverviewScreen.java:21:	Local variable 'columnNames' could be declared final
+src/Graphics/Screens/TeamOverviewScreen.java:40:	Local variable 'scrollPane' could be declared final
+src/Graphics/Screens/TeamScreen.java:1:	Package name contains upper case characters
+src/Graphics/Screens/TeamScreen.java:13:	Abstract classes should be named AbstractXXX
+src/Graphics/Screens/TeamScreen.java:13:	headerCommentRequirement Required
+src/Graphics/Screens/TeamScreen.java:16:	fieldCommentRequirement Required
+src/Graphics/Screens/TeamScreen.java:18:	Avoid variables with short names like c
+src/Graphics/Screens/TeamScreen.java:18:	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/Graphics/Screens/TeamScreen.java:18:	Use explicit scoping instead of the default package private level
+src/Graphics/Screens/TeamScreen.java:18:	fieldCommentRequirement Required
+src/Graphics/Screens/TeamScreen.java:19:	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/Graphics/Screens/TeamScreen.java:19:	fieldCommentRequirement Required
+src/Graphics/Screens/TeamScreen.java:21:	publicMethodCommentRequirement Required
+src/Graphics/Screens/TeamScreen.java:36:	Local variable 'upperLeftPanel' could be declared final
+src/Graphics/Screens/TeamScreen.java:45:	Local variable 'lowerLeftPanel' could be declared final
+src/Graphics/Screens/TeamScreen.java:54:	Local variable 'upperCentrePanel' could be declared final
+src/Graphics/Screens/TeamScreen.java:72:	Local variable 'upperRightPanel' could be declared final
+src/Graphics/Screens/TeamScreen.java:81:	Local variable 'middleRightPanel' could be declared final
+src/Graphics/Screens/TeamScreen.java:90:	Local variable 'lowerRightPanel' could be declared final
+src/Utility/TeamRoster.java:1:	Package name contains upper case characters
+src/Utility/TeamRoster.java:8:	headerCommentRequirement Required
+src/Utility/TeamRoster.java:10:	Avoid using implementation types like 'ArrayList'; use the interface instead
+src/Utility/TeamRoster.java:10:	fieldCommentRequirement Required
+src/Utility/TeamRoster.java:13:	publicMethodCommentRequirement Required
+src/Utility/TeamRoster.java:25:	Parameter 'difficulty' is not assigned and could be declared final
+src/Utility/TeamRoster.java:25:	publicMethodCommentRequirement Required
