@@ -42,6 +42,7 @@ public class GameScreen extends JFrame {
 	public static Color smallPanel = new Color (255, 255, 230);
 	public static Color importantColor = new Color (100, 200, 100);
 	public static Color lessImportantColor = new Color (180, 200, 130);
+	public static Color unselectedColor = new Color (240, 190, 190);
 	public static Color textColour = new Color (10, 50, 20);
 	
 	public static StartScreen startScreen;
