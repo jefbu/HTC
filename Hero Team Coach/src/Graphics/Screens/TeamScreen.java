@@ -247,7 +247,7 @@ public abstract class TeamScreen extends JPanel {
 							if (GameScreen.currentQuest != null) {
 							
 							GameScreen.setScreensInvisible();
-							GameScreen.questScreen.initiate();
+							GameScreen.questInitiationScreen.initiate();
 							
 							
 							for (int i = 0; i < TeamRoster.teamRosterList.size(); i++) {

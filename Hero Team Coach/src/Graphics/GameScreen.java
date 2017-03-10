@@ -15,6 +15,7 @@ import Graphics.Screens.AccountManagerScreen;
 import Graphics.Screens.HeroDetailScreen;
 import Graphics.Screens.MessagesScreen;
 import Graphics.Screens.OptionsScreen;
+import Graphics.Screens.QuestInitiationScreen;
 import Graphics.Screens.QuestScreen;
 import Graphics.Screens.StartScreen;
 import Graphics.Screens.TeamBlacksmithScreen;
@@ -54,6 +55,7 @@ public class GameScreen extends JFrame {
 	public static MessagesScreen messagesScreen;
 	public static HeroDetailScreen heroDetailScreen;
 	public static QuestScreen questScreen;
+	public static QuestInitiationScreen questInitiationScreen;
 	public static TeamRoster teamRoster;
 	public static WeaponInventory weaponInventory;
 	public static ArmourInventory armourInventory;
@@ -154,6 +156,10 @@ public class GameScreen extends JFrame {
 		questScreen = new QuestScreen();
 		getContentPane().add(questScreen);
 		questScreen.setVisible(false);
+		
+		questInitiationScreen = new QuestInitiationScreen();
+		getContentPane().add(questInitiationScreen);
+		questInitiationScreen.setVisible(false);
 		
 
 		setVisible(true);
