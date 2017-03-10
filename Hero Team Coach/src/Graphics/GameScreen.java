@@ -176,6 +176,8 @@ public class GameScreen extends JFrame {
 		GameScreen.messagesScreen.setVisible(false);
 		GameScreen.heroDetailScreen.setVisible(false);
 		GameScreen.teamBlacksmithScreen.setVisible(false);
+		GameScreen.questInitiationScreen.setVisible(false);
+		GameScreen.questScreen.setVisible(false);
 		
 	}
 	

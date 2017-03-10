@@ -9,6 +9,7 @@ public abstract class Quest {
 
 	public String title;
 	public String focus;
+	public String introduction;
 	public int risk;
 	public int cash;
 	public int loot;
