@@ -27,11 +27,14 @@ public class LocalDungeon extends Quest {
 		
 		this.title = "Explore Local Dungeon";
 		this.focus = "Combat";
-		introduction = "It seems there's a dungeon unexplored nearby. "
+		introduction = "Hello Team! \n \n"
+				+ "The local government has offered a bid for a license to clean out a dungeon in the vicinity. \n"
 				+ "Statistically, it likely has got at least one magical artifact, a few chests of gold; "
-				+ "and some magic scrolls and potions."
-				+ "And lots of traps and zombies and a boss fight at the end."
-				+ "Why don't we go and check it out?";
+				+ "and some magic scrolls and potions. \n"
+				+ "And well, lots of traps and zombies and possibly a boss fight at the end. \n"
+				+ "But you know, that's the type of challenge you all enjoy, right? \n"
+				+ "Why don't we go and check it out? \n \n"
+				+ "Regards, your account manager, \n";
 				
 		
 		this.risk = 30 + random.nextInt(21);
