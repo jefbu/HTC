@@ -15,38 +15,40 @@ public class Job {
 
 	public int jobTier;
 
-	public static Job soldier = new Job("Soldier", 25, 20, 15, 20, 10, 15, 15, 15, 1);
-	public static Job gladiator = new Job("Gladiator", 30, 15, 15, 20, 10, 15, 15, 15, 1);
-	public static Job duelist = new Job("Duelist", 25, 25, 15, 20, 10, 10, 10, 15, 1);
-	public static Job fencer = new Job("Fencer", 20, 25, 20, 20, 10, 15, 15, 15, 1);
-	public static Job captain = new Job("Captain", 20, 20, 15, 20, 15, 15, 15, 20, 1);
-	public static Job berserker = new Job("Berserker", 30, 25, 10, 15, 10, 10, 10, 10, 1);
-	public static Job marauder = new Job("Marauder", 25, 30, 15, 15, 10, 10, 10, 10, 1);
-	public static Job brigand = new Job("Brigand", 20, 20, 20, 20, 15, 15, 15, 15, 1);
-	public static Job highwayman = new Job("Highwayman", 20, 20, 15, 20, 15, 20, 15, 20, 1);
-	public static Job anchorite = new Job("Anchorite", 20, 25, 15, 15, 20, 20, 10, 10, 1);
-	public static Job knight = new Job("Knight", 20, 20, 15, 15, 20, 15, 20, 15, 1);
-	public static Job monk = new Job("Monk", 20, 20, 15, 20, 20, 15, 15, 15, 1);
+	public static Job brute = new Job("Brute", 30, 20, 20, 15, 15, 10, 15, 10, 1); //50, 35, 25, 25 = 135
+	public static Job commander = new Job("Commander", 20, 25, 20, 15, 20, 20, 20, 15, 2); // 45, 35, 40, 35 = 155
+	public static Job gendarme = new Job("Gendarme", 15, 35, 15, 25, 15, 25, 15, 30, 3); // 50, 40, 40, 45 = 175
+	public static Job fencer = new Job("Fencer", 10, 45, 10, 40, 10, 35, 10, 35, 4); // 55, 50, 45, 45 = 195
+	
+	public static Job engineer = new Job("Engineer", 15, 10, 25, 15, 30, 15, 15, 10, 1); //25, 40, 45, 25 = 135
+	public static Job strategist = new Job("Strategist", 20, 20, 20, 15, 20, 25, 20, 15, 2); // 40, 35, 45, 35 = 155
+	public static Job lawyer = new Job("Lawyer", 15, 25, 15, 25, 15, 35, 15, 30, 3); // 40, 40, 50, 45 = 175
+	public static Job savant = new Job("Savant", 10, 35, 10, 35, 10, 50, 10, 35, 4); // 45, 45, 60, 45 = 195
+	
+	public static Job artisan = new Job("Artisan", 15, 10, 30, 20, 20, 15, 15, 10, 1); //25, 50, 35, 25 = 135
+	public static Job peddler = new Job("Peddler", 20, 15, 20, 25, 20, 15, 20, 20, 2); // 35, 45, 35, 40 = 155
+	public static Job dancer = new Job("Dancer", 15, 30, 15, 35, 15, 25, 15, 25, 3); // 45, 50, 40, 40 = 175
+	public static Job surgeon = new Job("Surgeon", 10, 35, 10, 45, 10, 40, 10, 35, 4); // 45, 55, 50, 45 = 195
+	
+	public static Job bully = new Job("Bully", 25, 15, 15, 10, 15, 10, 30, 15, 1); //40, 25, 25, 45 = 135
+	public static Job writer = new Job("Writer", 20, 15, 20, 15, 20, 20, 20, 25, 2); // 35, 35, 40, 45 = 155
+	public static Job conArtist = new Job("Con Artist", 15, 25, 15, 30, 15, 25, 15, 35, 3); // 40, 45, 40, 50 = 175
+	public static Job celebrity = new Job("Celebrity", 10, 35, 10, 35, 10, 35, 10, 50, 4); // 45, 45, 45, 60 = 195
 
-	public static Job pugilist = new Job("Pugilist", 10, 45, 15, 20, 10, 20, 10, 20, 2);
-	public static Job oriflamme = new Job("Oriflamme", 10, 40, 10, 20, 10, 20, 10, 35, 2);
-	public static Job lionheart = new Job("Lionheart", 5, 50, 10, 25, 10, 20, 10, 25, 2);
-	public static Job zealot = new Job("Zealot", 10, 40, 10, 25, 10, 30, 10, 20, 2);
-	public static Job Ascetic = new Job("Ascetic", 10, 40, 10, 25, 10, 35, 10, 20, 2);
-	public static Job zodiac = new Job("Zodiac Knight", 10, 40, 10, 35, 10, 20, 10, 25, 2);
+	public static Job guardDog = new Job("Guard Dog", 40, 10, 10, 10, 10, 10, 10, 10, 1); //50, 20, 20, 20 = 110
+	public static Job lapDog = new Job("Lap Dog", 30, 10, 10, 15, 10, 15, 30, 15, 2); // 40, 25, 25, 45 = 135
+	public static Job packLeader = new Job("Pack Leader", 40, 15, 20, 10, 20, 10, 30, 15, 3); // 55, 30, 30, 45 = 160 
+	public static Job alphaDog = new Job("Alpha Dog", 50, 5, 30, 15, 30, 15, 35, 15, 4); // 55, 45, 45, 50 = 195
 
-	public static Job avatarOfDeath = new Job("Avatar of Death", 0, 60, 0, 40, 0, 40, 0, 40, 3);
-	public static Job harbinger = new Job("Harbinger", 0, 55, 0, 45, 0, 45, 0, 45, 3);
-
-	public static Job guardDog = new Job("Guard Dog", 30, -10, -10, -10, 60, 25, 20, 20, 1);
-	public static Job lapDog = new Job("Lap Dog", -15, 10, 10, 25, 20, 30, 30, 55, 1);
-	public static Job packLeader = new Job("Pack Leader", 20, 0, 0, 10, 55, 30, 30, 45, 2);
-	public static Job alphaDog = new Job("Alpha Dog", 25, 5, 10, 15, 55, 30, 35, 50, 3);
-
-	public static Job houseCat = new Job("House Cat", 5, 10, 5, 5, 45, 50, 40, 40, 1);
-	public static Job mouseHunter = new Job("Mouse Hunter", 15, 10, 0, 0, 50, 50, 35, 30, 1);
-	public static Job feralCat = new Job("Feral Cat", 20, 10, 5, 0, 55, 45, 20, 20, 2);
-	public static Job cheshireCat = new Job("Cheshire Cat", 10, 20, 15, 20, 40, 45, 45, 50, 3);
+	public static Job houseCat = new Job("House Cat", 15, 10, 20, 10, 15, 10, 20, 10, 1); // 25, 30, 25, 30 = 110
+	public static Job mouseHunter = new Job("Mouse Hunter", 25, 15, 25, 15, 15, 15, 10, 15, 2); // 40, 40, 30, 25 = 135
+	public static Job feralCat = new Job("Feral Cat", 25, 25, 25, 20, 20, 15, 15, 15, 3); // 50, 45, 35, 30 = 160
+	public static Job cheshireCat = new Job("Cheshire Cat", 20, 20, 20, 20, 40, 20, 40, 15, 4); // 40, 40, 60, 55 = 195
+	
+	public static Job insectEater = new Job("Insect Eater", 10, 10, 10, 10, 10, 10, 15, 15, 1); // 20, 20, 20, 30 = 90
+	public static Job eggLayer = new Job("Egg Layer", 10, 10, 10, 10, 15, 15, 20, 15, 2); // 20, 20, 30, 35 = 105
+	public static Job singer = new Job("Singer", 20, 10, 10, 10, 10, 10, 25, 15, 1); // 30, 20, 20, 40 = 110
+	public static Job fighter = new Job("Fighter", 10, 45, 10, 10, 10, 10, 15, 15, 2); // 55, 20, 20, 30 = 125
 
 	public Job(String name, int combatBonus, int combatLevelUp, int skillBonus, int skillLevelUp, int intelligenceBonus,
 			int intelligenceLevelUp, int personalityBonus, int personalityLevelUp, int jobTier) {

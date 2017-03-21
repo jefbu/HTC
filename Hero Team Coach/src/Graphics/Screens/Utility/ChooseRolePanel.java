@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import Entity.Hero;
 import Entity.Role;
 import Graphics.GameScreen;
 import Utility.TeamRoster;
@@ -33,6 +34,9 @@ public class ChooseRolePanel extends JPanel {
 	JPanel fourthRole;
 		JButton iconButton4;
 		JLabel nameLabel4;
+	JPanel fifthRole;
+		JButton iconButton5;
+		JLabel nameLabel5;
 		
 	boolean hasBlacksmith = false;
 
@@ -202,6 +206,48 @@ public class ChooseRolePanel extends JPanel {
 			fourthRole.add(nameLabel4);
 			
 		add(fourthRole);
+		
+		
+		fifthRole = new JPanel();
+		fifthRole.setPreferredSize(new Dimension (194, 50));
+		fifthRole.setBackground(GameScreen.mediumColor);
+		fifthRole.setBorder(new LineBorder(GameScreen.borderColor, 2, true));
+		fifthRole.setLayout(new FlowLayout(FlowLayout.LEFT, 2, 2));
+		
+			iconButton5 = new JButton();
+			iconButton5.setPreferredSize(new Dimension(40, 40));
+			iconButton5.setIcon(Role.hrOfficer.icon);
+			fifthRole.add(iconButton5);
+			
+				iconButton5.addActionListener(new ActionListener() {
+					
+					public void actionPerformed(ActionEvent e) {
+						
+						boolean clickAllowed = true;
+						for (Hero hero: TeamRoster.teamRosterList) {
+							if (hero.role == Role.hrOfficer) {
+								clickAllowed = false;
+							}
+						}
+						
+						if (clickAllowed == true) { 
+							TeamRoster.teamRosterList.get(index).role = Role.hrOfficer;
+							dialog.dispose();
+							GameScreen.teamOverviewScreen.fillHeroTeamOverviewPanelAggregated();
+						}
+						
+					}
+					
+				});
+			
+			
+			
+			nameLabel5 = new JLabel();
+			nameLabel5.setText("    " + Role.hrOfficer.name);
+			nameLabel5.setPreferredSize(new Dimension(140, 40));
+			fifthRole.add(nameLabel5);
+			
+		add(fifthRole);
 		
 		
 		

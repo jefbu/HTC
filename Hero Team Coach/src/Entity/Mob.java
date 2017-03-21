@@ -30,7 +30,7 @@ public class Mob {
 		
 	}
 	
-public static Mob Goblin = new Mob(Race.human, "Skree", Job.soldier, 20);
+public static Mob Goblin = new Mob(Race.human, "Skree", Job.brute, 20);
 	
 	
 	

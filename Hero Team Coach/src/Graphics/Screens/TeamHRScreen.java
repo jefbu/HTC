@@ -5,56 +5,95 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import Entity.Hero;
+import Entity.Role;
 import Graphics.GameScreen;
 import Graphics.ImageLoader;
+import Utility.HeroFactory;
+import Utility.TeamRoster;
 
 public class TeamHRScreen extends TeamScreen {
 
 	private static final long serialVersionUID = 1L;
 
+	Hero hrOfficer;
+	int hrMaturity;
+	int hrPersonality;
+
+	JLabel nameLabel;
+	JLabel maturityNumberLabel;
+	JLabel personalityNumberLabel;
+	JPanel traitsNumberPanel;
+
 	JPanel requirementsPanel;
 	JButton notHiringButton;
 	JButton hiringButton;
+	int hiring;
 	JPanel specialisationRequirementsPanel;
+	JButton combatButton;
+	JButton skillButton;
+	JButton intelligenceButton;
+	JButton personalityButton;
+	int specialisation;
 	JPanel experienceRequirementsPanel;
-		JButton juniorButton;
-		JButton mediorButton;
-		JButton seniorButton;
-		JButton leaderButton;
+	JButton juniorButton;
+	JButton mediorButton;
+	JButton seniorButton;
+	JButton leaderButton;
+	int seniority;
 	JPanel traitsRequirementsPanel;
-	
-		JButton lazyButton;
-		JButton illiterateButton;
-		
+
+	JButton lazyButton;
+	JButton illiterateButton;
+
 	JPanel hiringStrategyPanel;
-	
-		JButton autoButton;
-		JButton manualButton;
-		JButton phoneButton;
-		JButton interviewButton;
-		JButton aggressiveButton;
-		
-		JButton jobAdButton;
-		JButton bigAdButton;
-		JButton jobMarketButton;
-			
-		JButton trialistsButton;
+
+	JButton autoButton;
+	JButton manualButton;
+	JButton phoneButton;
+	JButton interviewButton;
+	JButton aggressiveButton;
+	int strategy;
+
+	JButton jobAdButton;
+	JButton bigAdButton;
+	JButton jobMarketButton;
+	int ads;
+
+	JButton trialistsButton;
+	int trial;
 
 	JPanel costPanel;
+	JLabel costLabel;
+	int cost;
 
 	JPanel applicantsPanel;
-	
+
 	ImageLoader imageLoader = new ImageLoader();
+
+	ArrayList<Hero> applicants = new ArrayList<Hero>();
 
 	public TeamHRScreen() {
 
 		super();
+
+		hiring = 0;
+		specialisation = 0;
+		seniority = 0;
+		strategy = 0;
+		ads = 0;
+		trial = 0;
+		hrMaturity = 0;
+		hrPersonality = 0;
+
 		centrePanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
 
 		JPanel upperPanel = new JPanel();
@@ -80,7 +119,7 @@ public class TeamHRScreen extends TeamScreen {
 		upperHRPanel.setBorder(new LineBorder(Color.LIGHT_GRAY, 2, true));
 		upperHRPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 7));
 
-		JLabel nameLabel = new JLabel();
+		nameLabel = new JLabel();
 		upperHRPanel.add(nameLabel);
 
 		upperPanel.add(upperHRPanel);
@@ -102,7 +141,7 @@ public class TeamHRScreen extends TeamScreen {
 		maturityNumberPanel.setBorder(new LineBorder(GameScreen.importantColor, 2, true));
 		maturityNumberPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 7));
 
-		JLabel maturityNumberLabel = new JLabel();
+		maturityNumberLabel = new JLabel();
 		maturityNumberPanel.add(maturityNumberLabel);
 
 		upperPanel.add(maturityNumberPanel);
@@ -124,7 +163,7 @@ public class TeamHRScreen extends TeamScreen {
 		personalityNumberPanel.setBorder(new LineBorder(GameScreen.lessImportantColor, 2, true));
 		personalityNumberPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 7));
 
-		JLabel personalityNumberLabel = new JLabel();
+		personalityNumberLabel = new JLabel();
 		personalityNumberPanel.add(personalityNumberLabel);
 
 		upperPanel.add(personalityNumberPanel);
@@ -140,7 +179,7 @@ public class TeamHRScreen extends TeamScreen {
 
 		upperPanel.add(traitsPanel);
 
-		JPanel traitsNumberPanel = new JPanel();
+		traitsNumberPanel = new JPanel();
 		traitsNumberPanel.setPreferredSize(new Dimension(200, 35));
 		traitsNumberPanel.setBackground(GameScreen.smallPanel);
 		traitsNumberPanel.setBorder(new LineBorder(GameScreen.lessImportantColor, 2, true));
@@ -161,11 +200,31 @@ public class TeamHRScreen extends TeamScreen {
 		notHiringButton.setBackground(GameScreen.unselectedColor);
 		notHiringButton.setPreferredSize(new Dimension(400, 30));
 
+		notHiringButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				notHiringButton.setBackground(GameScreen.unselectedColor);
+				hiringButton.setBackground(GameScreen.mediumColor);
+				hiring = 0;
+				greyAllButtons();
+				costLabel.setText("0");
+			}
+		});
+
 		requirementsPanel.add(notHiringButton);
 
 		hiringButton = new JButton("We are currently looking to fill the following position");
 		hiringButton.setBackground(GameScreen.mediumColor);
 		hiringButton.setPreferredSize(new Dimension(400, 30));
+
+		hiringButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				hiringButton.setBackground(GameScreen.lessImportantColor);
+				notHiringButton.setBackground(GameScreen.mediumColor);
+				hiring = 1;
+				recolourAllButtons();
+				calculateCost();
+			}
+		});
 
 		requirementsPanel.add(hiringButton);
 
@@ -174,33 +233,85 @@ public class TeamHRScreen extends TeamScreen {
 		specialisationRequirementsPanel.setBackground(GameScreen.tableRow2);
 		specialisationRequirementsPanel.setBorder(new LineBorder(GameScreen.borderColor, 1, true));
 		specialisationRequirementsPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
-			JButton combatButton = new JButton("COMBAT");
-			combatButton.setPreferredSize(new Dimension (180, 40));
-			combatButton.setBackground(GameScreen.lessImportantColor);
-			
-			specialisationRequirementsPanel.add(combatButton);
-			
-			JButton skillButton = new JButton("SKILL");
-			skillButton.setPreferredSize(new Dimension (180, 40));
-			skillButton.setBackground(GameScreen.mediumColor);
-			
-			specialisationRequirementsPanel.add(skillButton);
-			
-			JButton intelligenceButton = new JButton("INTELLIGENCE");
-			intelligenceButton.setPreferredSize(new Dimension (180, 40));
-			intelligenceButton.setBackground(GameScreen.mediumColor);
-			
-			specialisationRequirementsPanel.add(intelligenceButton);
-			
-			JButton personalityButton = new JButton("PERSONALITY");
-			personalityButton.setPreferredSize(new Dimension (180, 40));
-			personalityButton.setBackground(GameScreen.mediumColor);
-			
-			specialisationRequirementsPanel.add(personalityButton);
-			
-			JLabel specialisationExplanationLabel = new JLabel("Specialisation");
-			specialisationRequirementsPanel.add(specialisationExplanationLabel);
+
+		combatButton = new JButton("COMBAT");
+		combatButton.setPreferredSize(new Dimension(180, 40));
+		combatButton.setBackground(GameScreen.mediumColor);
+
+		combatButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (hiring == 1) {
+					combatButton.setBackground(GameScreen.lessImportantColor);
+					skillButton.setBackground(GameScreen.mediumColor);
+					intelligenceButton.setBackground(GameScreen.mediumColor);
+					personalityButton.setBackground(GameScreen.mediumColor);
+					specialisation = 1;
+					calculateCost();
+				}
+			}
+		});
+
+		specialisationRequirementsPanel.add(combatButton);
+
+		skillButton = new JButton("SKILL");
+		skillButton.setPreferredSize(new Dimension(180, 40));
+		skillButton.setBackground(GameScreen.mediumColor);
+
+		skillButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (hiring == 1) {
+					skillButton.setBackground(GameScreen.lessImportantColor);
+					combatButton.setBackground(GameScreen.mediumColor);
+					intelligenceButton.setBackground(GameScreen.mediumColor);
+					personalityButton.setBackground(GameScreen.mediumColor);
+					specialisation = 2;
+					calculateCost();
+				}
+			}
+		});
+
+		specialisationRequirementsPanel.add(skillButton);
+
+		intelligenceButton = new JButton("INTELLIGENCE");
+		intelligenceButton.setPreferredSize(new Dimension(180, 40));
+		intelligenceButton.setBackground(GameScreen.mediumColor);
+
+		intelligenceButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (hiring == 1) {
+					intelligenceButton.setBackground(GameScreen.lessImportantColor);
+					skillButton.setBackground(GameScreen.mediumColor);
+					combatButton.setBackground(GameScreen.mediumColor);
+					personalityButton.setBackground(GameScreen.mediumColor);
+					specialisation = 3;
+					calculateCost();
+				}
+			}
+		});
+
+		specialisationRequirementsPanel.add(intelligenceButton);
+
+		personalityButton = new JButton("PERSONALITY");
+		personalityButton.setPreferredSize(new Dimension(180, 40));
+		personalityButton.setBackground(GameScreen.mediumColor);
+
+		personalityButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (hiring == 1) {
+					personalityButton.setBackground(GameScreen.lessImportantColor);
+					skillButton.setBackground(GameScreen.mediumColor);
+					intelligenceButton.setBackground(GameScreen.mediumColor);
+					combatButton.setBackground(GameScreen.mediumColor);
+					specialisation = 4;
+					calculateCost();
+				}
+			}
+		});
+
+		specialisationRequirementsPanel.add(personalityButton);
+
+		JLabel specialisationExplanationLabel = new JLabel("Specialisation");
+		specialisationRequirementsPanel.add(specialisationExplanationLabel);
 
 		requirementsPanel.add(specialisationRequirementsPanel);
 
@@ -209,33 +320,90 @@ public class TeamHRScreen extends TeamScreen {
 		experienceRequirementsPanel.setBackground(GameScreen.tableRow2);
 		experienceRequirementsPanel.setBorder(new LineBorder(GameScreen.borderColor, 1, true));
 		experienceRequirementsPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
-			juniorButton = new JButton("JUNIOR");
-			juniorButton.setPreferredSize(new Dimension(180, 40));
-			juniorButton.setBackground(GameScreen.mediumColor);
-			
-			experienceRequirementsPanel.add(juniorButton);
-			
-			mediorButton = new JButton("MEDIOR");
-			mediorButton.setPreferredSize(new Dimension(180, 40));
-			mediorButton.setBackground(GameScreen.mediumColor);
-			
-			experienceRequirementsPanel.add(mediorButton);
-			
-			seniorButton = new JButton("SENIOR");
-			seniorButton.setPreferredSize(new Dimension(180, 40));
-			seniorButton.setBackground(GameScreen.mediumColor);
-			
-			experienceRequirementsPanel.add(seniorButton);
-			
-			leaderButton = new JButton("ROLE MODEL");
-			leaderButton.setPreferredSize(new Dimension(180, 40));
-			leaderButton.setBackground(GameScreen.mediumColor);
-			
-			experienceRequirementsPanel.add(leaderButton);
-			
-			JLabel experienceLabel = new JLabel("  Experience  ");
-			experienceRequirementsPanel.add(experienceLabel);
+
+		juniorButton = new JButton("JUNIOR");
+		juniorButton.setPreferredSize(new Dimension(180, 40));
+		juniorButton.setBackground(GameScreen.mediumColor);
+
+		juniorButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (hiring == 1) {
+					juniorButton.setBackground(GameScreen.lessImportantColor);
+					mediorButton.setBackground(GameScreen.mediumColor);
+					seniorButton.setBackground(GameScreen.mediumColor);
+					leaderButton.setBackground(GameScreen.mediumColor);
+					seniority = 1;
+					if (trial == 1)
+						trialistsButton.setBackground(GameScreen.lessImportantColor);
+					calculateCost();
+				}
+			}
+		});
+
+		experienceRequirementsPanel.add(juniorButton);
+
+		mediorButton = new JButton("MEDIOR");
+		mediorButton.setPreferredSize(new Dimension(180, 40));
+		mediorButton.setBackground(GameScreen.mediumColor);
+
+		mediorButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (hiring == 1) {
+					mediorButton.setBackground(GameScreen.lessImportantColor);
+					juniorButton.setBackground(GameScreen.mediumColor);
+					seniorButton.setBackground(GameScreen.mediumColor);
+					leaderButton.setBackground(GameScreen.mediumColor);
+					seniority = 2;
+					trialistsButton.setBackground(GameScreen.mediumColor);
+					calculateCost();
+				}
+			}
+		});
+
+		experienceRequirementsPanel.add(mediorButton);
+
+		seniorButton = new JButton("SENIOR");
+		seniorButton.setPreferredSize(new Dimension(180, 40));
+		seniorButton.setBackground(GameScreen.mediumColor);
+
+		seniorButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (hiring == 1) {
+					seniorButton.setBackground(GameScreen.lessImportantColor);
+					mediorButton.setBackground(GameScreen.mediumColor);
+					juniorButton.setBackground(GameScreen.mediumColor);
+					leaderButton.setBackground(GameScreen.mediumColor);
+					seniority = 3;
+					trialistsButton.setBackground(GameScreen.mediumColor);
+					calculateCost();
+				}
+			}
+		});
+
+		experienceRequirementsPanel.add(seniorButton);
+
+		leaderButton = new JButton("ROLE MODEL");
+		leaderButton.setPreferredSize(new Dimension(180, 40));
+		leaderButton.setBackground(GameScreen.mediumColor);
+
+		leaderButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (hiring == 1) {
+					leaderButton.setBackground(GameScreen.lessImportantColor);
+					mediorButton.setBackground(GameScreen.mediumColor);
+					seniorButton.setBackground(GameScreen.mediumColor);
+					juniorButton.setBackground(GameScreen.mediumColor);
+					seniority = 4;
+					trialistsButton.setBackground(GameScreen.mediumColor);
+					calculateCost();
+				}
+			}
+		});
+
+		experienceRequirementsPanel.add(leaderButton);
+
+		JLabel experienceLabel = new JLabel("  Experience  ");
+		experienceRequirementsPanel.add(experienceLabel);
 
 		requirementsPanel.add(experienceRequirementsPanel);
 
@@ -244,24 +412,23 @@ public class TeamHRScreen extends TeamScreen {
 		traitsRequirementsPanel.setBackground(GameScreen.tableRow2);
 		traitsRequirementsPanel.setBorder(new LineBorder(GameScreen.borderColor, 1, true));
 		traitsRequirementsPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
-			JButton testButton2 = new JButton();
-			testButton2.setPreferredSize(new Dimension (890, 16));
-			traitsRequirementsPanel.add(testButton2);
-			
-			JButton lazyButton = new JButton();
-			lazyButton.setPreferredSize(new Dimension (16, 16));
-			lazyButton.setIcon(imageLoader.loadImageIcon("/Images/Icons/hero_lazy.png"));
-			traitsRequirementsPanel.add(lazyButton);
-			
-				lazyButton.addActionListener(new ActionListener() {
-					
-					public void actionPerformed (ActionEvent e) {
-						lazyButton.setBorder(new LineBorder(GameScreen.importantColor, 2, false));
-					}
-					
-				});
-			
+
+		JButton testButton2 = new JButton();
+		testButton2.setPreferredSize(new Dimension(890, 16));
+		traitsRequirementsPanel.add(testButton2);
+
+		JButton lazyButton = new JButton();
+		lazyButton.setPreferredSize(new Dimension(16, 16));
+		lazyButton.setIcon(imageLoader.loadImageIcon("/Images/Icons/hero_lazy.png"));
+		traitsRequirementsPanel.add(lazyButton);
+
+		lazyButton.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				lazyButton.setBorder(new LineBorder(GameScreen.importantColor, 2, false));
+			}
+
+		});
 
 		requirementsPanel.add(traitsRequirementsPanel);
 
@@ -270,73 +437,192 @@ public class TeamHRScreen extends TeamScreen {
 		hiringStrategyPanel.setBackground(GameScreen.tableRow2);
 		hiringStrategyPanel.setBorder(new LineBorder(GameScreen.borderColor, 1, true));
 		hiringStrategyPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
-			autoButton = new JButton("Filter CVs automatically");
-			autoButton.setPreferredSize(new Dimension(170, 40));
-			autoButton.setBackground(GameScreen.mediumColor);
-			
-			hiringStrategyPanel.add(autoButton);
-			
-			manualButton = new JButton("Filter CVs manually");
-			manualButton.setPreferredSize(new Dimension(170, 40));
-			manualButton.setBackground(GameScreen.mediumColor);
-			
-			hiringStrategyPanel.add(manualButton);
-			
-			phoneButton = new JButton("Initial phone interview");
-			phoneButton.setPreferredSize(new Dimension(170, 40));
-			phoneButton.setBackground(GameScreen.mediumColor);
-			
-			hiringStrategyPanel.add(phoneButton);
-			
-			interviewButton = new JButton("HR live interview");
-			interviewButton.setPreferredSize(new Dimension(170, 40));
-			interviewButton.setBackground(GameScreen.mediumColor);
-			
-			hiringStrategyPanel.add(interviewButton);
-			
-			aggressiveButton = new JButton("Target profiles directly");
-			aggressiveButton.setPreferredSize(new Dimension(170, 40));
-			aggressiveButton.setBackground(GameScreen.mediumColor);
 
-			hiringStrategyPanel.add(aggressiveButton);
-			
-			JPanel emptySpacePanel = new JPanel();
-			emptySpacePanel.setPreferredSize(new Dimension(850, 10));
-			emptySpacePanel.setBackground(GameScreen.tableRow2);
-			hiringStrategyPanel.add(emptySpacePanel);
-			
-			jobAdButton = new JButton("Newspaper Ad");
-			jobAdButton.setPreferredSize(new Dimension(130, 40));
-			jobAdButton.setBackground(GameScreen.mediumColor);
+		autoButton = new JButton("Filter CVs automatically");
+		autoButton.setPreferredSize(new Dimension(170, 40));
+		autoButton.setBackground(GameScreen.mediumColor);
 
-			hiringStrategyPanel.add(jobAdButton);
-			
-			bigAdButton = new JButton("Billboard Ads");
-			bigAdButton.setPreferredSize(new Dimension(130, 40));
-			bigAdButton.setBackground(GameScreen.mediumColor);
-			
-			hiringStrategyPanel.add(bigAdButton);
-			
-			jobMarketButton = new JButton("Host Job Fair");
-			jobMarketButton.setPreferredSize(new Dimension(130, 40));
-			jobMarketButton.setBackground(GameScreen.mediumColor);
-			
-			hiringStrategyPanel.add(jobMarketButton);
-			
-			JPanel emptySpacePanel2 = new JPanel();
-			emptySpacePanel2.setPreferredSize(new Dimension (20, 40));
-			emptySpacePanel2.setBackground(GameScreen.tableRow2);
-			hiringStrategyPanel.add(emptySpacePanel2);
-			
-			trialistsButton = new JButton("hold Trials for junior profiles");
-			trialistsButton.setPreferredSize(new Dimension(200, 40));
-			trialistsButton.setBackground(GameScreen.mediumColor);
-			
-			hiringStrategyPanel.add(trialistsButton);
-			
-			
+		autoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (hiring == 1) {
+					autoButton.setBackground(GameScreen.lessImportantColor);
+					manualButton.setBackground(GameScreen.mediumColor);
+					phoneButton.setBackground(GameScreen.mediumColor);
+					interviewButton.setBackground(GameScreen.mediumColor);
+					aggressiveButton.setBackground(GameScreen.mediumColor);
+					strategy = 1;
+					calculateCost();
+				}
+			}
+		});
 
+		hiringStrategyPanel.add(autoButton);
+
+		manualButton = new JButton("Filter CVs manually");
+		manualButton.setPreferredSize(new Dimension(170, 40));
+		manualButton.setBackground(GameScreen.mediumColor);
+
+		manualButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (hiring == 1) {
+					manualButton.setBackground(GameScreen.lessImportantColor);
+					autoButton.setBackground(GameScreen.mediumColor);
+					phoneButton.setBackground(GameScreen.mediumColor);
+					interviewButton.setBackground(GameScreen.mediumColor);
+					aggressiveButton.setBackground(GameScreen.mediumColor);
+					strategy = 2;
+					calculateCost();
+				}
+			}
+		});
+
+		hiringStrategyPanel.add(manualButton);
+
+		phoneButton = new JButton("Initial phone interview");
+		phoneButton.setPreferredSize(new Dimension(170, 40));
+		phoneButton.setBackground(GameScreen.mediumColor);
+
+		phoneButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (hiring == 1) {
+					phoneButton.setBackground(GameScreen.lessImportantColor);
+					manualButton.setBackground(GameScreen.mediumColor);
+					autoButton.setBackground(GameScreen.mediumColor);
+					interviewButton.setBackground(GameScreen.mediumColor);
+					aggressiveButton.setBackground(GameScreen.mediumColor);
+					strategy = 3;
+					calculateCost();
+				}
+			}
+		});
+
+		hiringStrategyPanel.add(phoneButton);
+
+		interviewButton = new JButton("HR live interview");
+		interviewButton.setPreferredSize(new Dimension(170, 40));
+		interviewButton.setBackground(GameScreen.mediumColor);
+
+		interviewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (hiring == 1) {
+					interviewButton.setBackground(GameScreen.lessImportantColor);
+					manualButton.setBackground(GameScreen.mediumColor);
+					phoneButton.setBackground(GameScreen.mediumColor);
+					autoButton.setBackground(GameScreen.mediumColor);
+					aggressiveButton.setBackground(GameScreen.mediumColor);
+					strategy = 4;
+					calculateCost();
+				}
+			}
+		});
+
+		hiringStrategyPanel.add(interviewButton);
+
+		aggressiveButton = new JButton("Target profiles directly");
+		aggressiveButton.setPreferredSize(new Dimension(170, 40));
+		aggressiveButton.setBackground(GameScreen.mediumColor);
+
+		aggressiveButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (hiring == 1) {
+					aggressiveButton.setBackground(GameScreen.lessImportantColor);
+					manualButton.setBackground(GameScreen.mediumColor);
+					phoneButton.setBackground(GameScreen.mediumColor);
+					interviewButton.setBackground(GameScreen.mediumColor);
+					autoButton.setBackground(GameScreen.mediumColor);
+					strategy = 5;
+					calculateCost();
+				}
+			}
+		});
+
+		hiringStrategyPanel.add(aggressiveButton);
+
+		JPanel emptySpacePanel = new JPanel();
+		emptySpacePanel.setPreferredSize(new Dimension(850, 10));
+		emptySpacePanel.setBackground(GameScreen.tableRow2);
+		hiringStrategyPanel.add(emptySpacePanel);
+
+		jobAdButton = new JButton("Newspaper Ad");
+		jobAdButton.setPreferredSize(new Dimension(130, 40));
+		jobAdButton.setBackground(GameScreen.mediumColor);
+
+		jobAdButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (hiring == 1) {
+					jobAdButton.setBackground(GameScreen.lessImportantColor);
+					bigAdButton.setBackground(GameScreen.mediumColor);
+					jobMarketButton.setBackground(GameScreen.mediumColor);
+					ads = 1;
+					calculateCost();
+				}
+			}
+		});
+
+		hiringStrategyPanel.add(jobAdButton);
+
+		bigAdButton = new JButton("Billboard Ads");
+		bigAdButton.setPreferredSize(new Dimension(130, 40));
+		bigAdButton.setBackground(GameScreen.mediumColor);
+
+		bigAdButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (hiring == 1) {
+					bigAdButton.setBackground(GameScreen.lessImportantColor);
+					jobAdButton.setBackground(GameScreen.mediumColor);
+					jobMarketButton.setBackground(GameScreen.mediumColor);
+					ads = 2;
+					calculateCost();
+				}
+			}
+		});
+
+		hiringStrategyPanel.add(bigAdButton);
+
+		jobMarketButton = new JButton("Host Job Fair");
+		jobMarketButton.setPreferredSize(new Dimension(130, 40));
+		jobMarketButton.setBackground(GameScreen.mediumColor);
+
+		jobMarketButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (hiring == 1) {
+					jobMarketButton.setBackground(GameScreen.lessImportantColor);
+					bigAdButton.setBackground(GameScreen.mediumColor);
+					jobAdButton.setBackground(GameScreen.mediumColor);
+					ads = 3;
+					calculateCost();
+				}
+			}
+		});
+
+		hiringStrategyPanel.add(jobMarketButton);
+
+		JPanel emptySpacePanel2 = new JPanel();
+		emptySpacePanel2.setPreferredSize(new Dimension(20, 40));
+		emptySpacePanel2.setBackground(GameScreen.tableRow2);
+		hiringStrategyPanel.add(emptySpacePanel2);
+
+		trialistsButton = new JButton("hold Trials for junior profiles");
+		trialistsButton.setPreferredSize(new Dimension(200, 40));
+		trialistsButton.setBackground(GameScreen.mediumColor);
+
+		trialistsButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (hiring == 1 && seniority == 1) {
+					if (trial == 0) {
+						trialistsButton.setBackground(GameScreen.lessImportantColor);
+						trial = 1;
+						calculateCost();
+					} else if (trial == 1) {
+						trialistsButton.setBackground(GameScreen.mediumColor);
+						trial = 0;
+						calculateCost();
+					}
+				}
+			}
+		});
+
+		hiringStrategyPanel.add(trialistsButton);
 
 		requirementsPanel.add(hiringStrategyPanel);
 
@@ -354,7 +640,7 @@ public class TeamHRScreen extends TeamScreen {
 		costShowPanel.setBackground(GameScreen.backgroundColor);
 		costPanel.add(costShowPanel);
 
-		JLabel costLabel = new JLabel("CHING");
+		costLabel = new JLabel("0");
 		costShowPanel.add(costLabel);
 
 		centrePanel.add(costPanel);
@@ -369,48 +655,272 @@ public class TeamHRScreen extends TeamScreen {
 				"We have selected the following CVs for you to review. These applicants will receive a standard 'the position has already been filled' answer if you choose to ignore them");
 
 		applicantsPanel.add(applicantsTitleLabel);
-		
+
 		JPanel firstApplicantPanel = new JPanel();
 		firstApplicantPanel.setPreferredSize(new Dimension(900, 50));
 		firstApplicantPanel.setBackground(GameScreen.tableRow2);
 		firstApplicantPanel.setBorder(new LineBorder(GameScreen.borderColor, 1, true));
 
 		applicantsPanel.add(firstApplicantPanel);
-		
+
 		JPanel secondApplicantPanel = new JPanel();
 		secondApplicantPanel.setPreferredSize(new Dimension(900, 45));
 		secondApplicantPanel.setBackground(GameScreen.tableRow2);
 		secondApplicantPanel.setBorder(new LineBorder(GameScreen.borderColor, 1, true));
 
 		applicantsPanel.add(secondApplicantPanel);
-		
+
 		JPanel thirdApplicantPanel = new JPanel();
 		thirdApplicantPanel.setPreferredSize(new Dimension(900, 45));
 		thirdApplicantPanel.setBackground(GameScreen.tableRow2);
 		thirdApplicantPanel.setBorder(new LineBorder(GameScreen.borderColor, 1, true));
 
 		applicantsPanel.add(thirdApplicantPanel);
-		
+
 		JPanel fourthApplicantPanel = new JPanel();
 		fourthApplicantPanel.setPreferredSize(new Dimension(900, 45));
 		fourthApplicantPanel.setBackground(GameScreen.tableRow2);
 		fourthApplicantPanel.setBorder(new LineBorder(GameScreen.borderColor, 1, true));
 
 		applicantsPanel.add(fourthApplicantPanel);
-		
+
 		JPanel fifthApplicantPanel = new JPanel();
 		fifthApplicantPanel.setPreferredSize(new Dimension(900, 45));
 		fifthApplicantPanel.setBackground(GameScreen.tableRow2);
 		fifthApplicantPanel.setBorder(new LineBorder(GameScreen.borderColor, 1, true));
 
 		applicantsPanel.add(fifthApplicantPanel);
-		
-		
+
 		centrePanel.add(applicantsPanel);
 
 	}
 
+	public void greyAllButtons() {
+		combatButton.setBackground(GameScreen.mediumColor);
+		skillButton.setBackground(GameScreen.mediumColor);
+		intelligenceButton.setBackground(GameScreen.mediumColor);
+		personalityButton.setBackground(GameScreen.mediumColor);
+		juniorButton.setBackground(GameScreen.mediumColor);
+		mediorButton.setBackground(GameScreen.mediumColor);
+		seniorButton.setBackground(GameScreen.mediumColor);
+		leaderButton.setBackground(GameScreen.mediumColor);
+		autoButton.setBackground(GameScreen.mediumColor);
+		manualButton.setBackground(GameScreen.mediumColor);
+		phoneButton.setBackground(GameScreen.mediumColor);
+		interviewButton.setBackground(GameScreen.mediumColor);
+		aggressiveButton.setBackground(GameScreen.mediumColor);
+		jobAdButton.setBackground(GameScreen.mediumColor);
+		bigAdButton.setBackground(GameScreen.mediumColor);
+		jobMarketButton.setBackground(GameScreen.mediumColor);
+		trialistsButton.setBackground(GameScreen.mediumColor);
+	}
+
+	public void recolourAllButtons() {
+
+		switch (specialisation) {
+		case 1:
+			combatButton.setBackground(GameScreen.lessImportantColor);
+			break;
+		case 2:
+			skillButton.setBackground(GameScreen.lessImportantColor);
+			break;
+		case 3:
+			intelligenceButton.setBackground(GameScreen.lessImportantColor);
+			break;
+		case 4:
+			personalityButton.setBackground(GameScreen.lessImportantColor);
+			break;
+		}
+
+		switch (seniority) {
+		case 1:
+			juniorButton.setBackground(GameScreen.lessImportantColor);
+			break;
+		case 2:
+			mediorButton.setBackground(GameScreen.lessImportantColor);
+			break;
+		case 3:
+			seniorButton.setBackground(GameScreen.lessImportantColor);
+			break;
+		case 4:
+			leaderButton.setBackground(GameScreen.lessImportantColor);
+			break;
+		}
+
+		switch (strategy) {
+		case 1:
+			autoButton.setBackground(GameScreen.lessImportantColor);
+			break;
+		case 2:
+			manualButton.setBackground(GameScreen.lessImportantColor);
+			break;
+		case 3:
+			phoneButton.setBackground(GameScreen.lessImportantColor);
+			break;
+		case 4:
+			interviewButton.setBackground(GameScreen.lessImportantColor);
+			break;
+		case 5:
+			aggressiveButton.setBackground(GameScreen.lessImportantColor);
+			break;
+		}
+
+		switch (ads) {
+		case 1:
+			jobAdButton.setBackground(GameScreen.lessImportantColor);
+			break;
+		case 2:
+			bigAdButton.setBackground(GameScreen.lessImportantColor);
+			break;
+		case 3:
+			jobMarketButton.setBackground(GameScreen.lessImportantColor);
+			break;
+		}
+
+		if (seniority == 1 && trial == 1)
+			trialistsButton.setBackground(GameScreen.lessImportantColor);
+
+	}
+
+	public void calculateCost() {
+
+		if (hiring == 1 && specialisation != 0 && seniority != 0 && strategy != 0 && ads != 0) {
+
+			cost = 10000;
+
+			switch (seniority) {
+			case 2:
+				cost = cost * 12 / 10;
+				break;
+			case 3:
+				cost = cost * 15 / 10;
+				break;
+			case 4:
+				cost = cost * 2;
+				break;
+			}
+
+			switch (strategy) {
+			case 2:
+				cost = cost * 12 / 10;
+				break;
+			case 3:
+				cost = cost * 15 / 10;
+				break;
+			case 4:
+				cost = cost * 2;
+				break;
+			case 5:
+				cost = cost * 3;
+			}
+
+			switch (ads) {
+			case 2:
+				cost = cost * 15 / 10;
+				break;
+			case 3:
+				cost = cost * 3;
+				break;
+			}
+
+			if (trial == 1 && seniority == 1)
+				cost = cost * 3;
+
+			costLabel.setText(Integer.toString(cost));
+
+		}
+
+	}
+
 	public void fillHRScreen() {
+
+		hrOfficer = null;
+
+		for (Hero hero : TeamRoster.teamRosterList) {
+			if (hero.role == Role.hrOfficer)
+				hrOfficer = hero;
+		}
+
+		if (hrOfficer != null) {
+
+			nameLabel.setText(hrOfficer.name);
+			maturityNumberLabel.setText(Integer.toString(hrOfficer.maturity));
+			personalityNumberLabel.setText(Integer.toString(hrOfficer.personality));
+			hrMaturity = hrOfficer.maturity;
+			hrPersonality = hrOfficer.personality;
+
+		}
+		
+		else {
+			hrMaturity = 0;
+			hrPersonality = 0;
+		}
+	}
+
+	public void searchApplicants() {
+
+		int heroesFound = findOutAmountOfApplicants();
+
+		for (int i = 0; i < heroesFound; i++) {
+
+			applicants.add(HeroFactory.generateHRHero(hrMaturity, hrPersonality, specialisation,
+					seniority, strategy, trial));
+
+		}
+
+	}
+
+	public int findOutAmountOfApplicants() {
+
+		Random random = new Random();
+		int heroesFound = random.nextInt(500) + 1;
+
+		switch (seniority) {
+		case 1:
+			heroesFound = heroesFound * 11 / 10;
+			break;
+		case 3:
+			heroesFound = heroesFound * 8 / 10;
+			break;
+		case 4:
+			heroesFound = heroesFound * 5 / 10;
+			break;
+		}
+
+		switch (ads) {
+		case 2:
+			heroesFound = heroesFound * 15 / 10;
+			break;
+		case 3:
+			heroesFound = heroesFound * 3;
+			break;
+		}
+
+		switch (strategy) {
+		case 1:
+			heroesFound = heroesFound * 12 / 10;
+			break;
+		case 3:
+			heroesFound = heroesFound * 8 / 10;
+			break;
+		case 4:
+			heroesFound = heroesFound * 5 / 10;
+			break;
+		case 5:
+			heroesFound = random.nextInt((3) + 1) * 100;
+			break;
+		}
+
+		heroesFound = (heroesFound * hrMaturity) / (random.nextInt(100) + 1);
+		heroesFound = (heroesFound * hrPersonality) / (random.nextInt(100) + 1);
+
+		heroesFound = (heroesFound / 100);
+
+		if (heroesFound > 5) {
+			heroesFound = 5;
+		}
+
+		return heroesFound;
 
 	}
 

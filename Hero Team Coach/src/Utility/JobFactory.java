@@ -20,45 +20,36 @@ public class JobFactory {
 		int jobtier;
 		if (roll < 65) jobtier = 1;
 		else if (roll < 90) jobtier = 2;
-		else jobtier = 3;
+		else if (roll < 99) jobtier = 3;
+		else jobtier = 4;
 		
 		if(jobtier == 1) {
 		
 			if (race == Race.human) {
 				
-				roll = random.nextInt(100) + 1;
-				if (roll < 16) return Job.soldier;
-				else if (roll < 31) return Job.knight;
-				else if (roll < 41) return Job.brigand;
-				else if (roll < 51) return Job.captain;
-				else if (roll < 61) return Job.berserker;
-				else if (roll < 71) return Job.monk;
-				else if (roll < 76) return Job.gladiator;
-				else if (roll < 81) return Job.duelist;
-				else if (roll < 86) return Job.anchorite;
-				else if (roll < 91) return Job.highwayman;
-				else if (roll < 96) return Job.fencer;
-				else return Job.marauder;
+				roll = random.nextInt(4) + 1;
+				switch(roll) {
+				case 1: return Job.brute;
+				case 2: return Job.artisan;
+				case 3: return Job.engineer;
+				case 4: return Job.bully;
+				}
+
 				
 			}
 			
 			else if (race == Race.dog) {
-				
-				roll = random.nextInt(100) + 1;
-				if (roll < 51) return Job.guardDog;
-				else return Job.lapDog;
-				
-			}
+				return Job.guardDog;
+				}
 			
 			else if (race == Race.cat) {
-				
-				roll = random.nextInt(100) + 1;
-				if (roll < 51) return Job.mouseHunter;
-				else return Job.houseCat;
-				
+				return Job.houseCat;				
 			}
 			
-			else return Job.oriflamme;
+			else {
+				return Job.insectEater;
+				//ToDo: implement gender
+			}
 		
 		}
 		
@@ -66,24 +57,28 @@ public class JobFactory {
 			
 			if (race == Race.human) {
 				
-				return Job.pugilist;
+				roll = random.nextInt(4) + 1;
+				switch(roll) {
+				case 1: return Job.commander;
+				case 2: return Job.strategist;
+				case 3: return Job.peddler;
+				case 4: return Job.writer;
+				}
 				
 			}
 			
 			else if (race == Race.dog) {
-				
-				return Job.packLeader;
-				
+				return Job.lapDog;
 			}
 			
 			else if (race == Race.cat) {
-				
-				return Job.feralCat;
-				
+				return Job.mouseHunter;
 			}
-					
 			
-		else return Job.zodiac;
+			else {
+				return Job.eggLayer;
+				//ToDo: implement gender
+			}
 			
 		}
 		
@@ -91,28 +86,66 @@ public class JobFactory {
 			
 			if (race == Race.human) {
 				
-				return Job.avatarOfDeath;
+				roll = random.nextInt(4) + 1;
+				switch(roll) {
+				case 1: return Job.gendarme;
+				case 2: return Job.lawyer;
+				case 3: return Job.dancer;
+				case 4: return Job.conArtist;
+				}
 				
 			}
 			
 			else if (race == Race.dog) {
-				
-				return Job.alphaDog;
-				
+				return Job.packLeader;
 			}
 			
-			else if (race == Race.cat) {
-				
-				return Job.cheshireCat;
-				
+			else {
+				return Job.feralCat;
 			}
-			
-			else return Job.berserker;
 			
 		}
 		
-		else return Job.harbinger;
+		else {
+			
+			if (race == Race.human) {
+				
+				roll = random.nextInt(4) + 1;
+				switch(roll) {
+				case 1: return Job.fencer;
+				case 2: return Job.savant;
+				case 3: return Job.surgeon;
+				case 4: return Job.celebrity;
+				}
+				
+			}
+			
+			else if (race == Race.dog) {
+				return Job.alphaDog;
+			}
+			
+			else {
+				return Job.cheshireCat;
+			}
+			
+		}
+		
+		return Job.singer;
 		
 	}
+	
+	public static Job generateHRJob(Race race, int specialisation) {
+		
+		switch(specialisation) {
+
+		}
+		
+		return Job.singer;
+	}
+	
+	
+	
+	
+	
 
 }

@@ -132,8 +132,7 @@ public abstract class TeamScreen extends JPanel {
 
 		conversations.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				GameScreen.teamBlacksmithScreen.setVisible(true);
+				GameScreen.teamHRScreen.searchApplicants();
 
 			}
 		});

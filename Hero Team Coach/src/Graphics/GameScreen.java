@@ -93,6 +93,8 @@ public class GameScreen extends JFrame {
 	public static int runner = 0;
 	
 	public static ArrayList<Hero> questers;
+	
+	public Hero hrOfficer;
 
 	
 
@@ -108,6 +110,8 @@ public class GameScreen extends JFrame {
 		questers = new ArrayList<Hero>();
 		messageDialog = new MessageDialog();
 		availableQuest = new AvailableQuests();
+		
+		hrOfficer = null;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(WIDTH, HEIGHT);

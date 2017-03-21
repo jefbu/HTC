@@ -16,8 +16,8 @@ public class RaceFactory {
 		
 		int roll = random.nextInt(100) + 1;
 		int racetier;
-		if (roll < 55) racetier = 1;
-		else if (roll < 85) racetier = 3;
+		if (roll < 75) racetier = 1;
+		else if (roll < 99) racetier = 3;
 		else racetier = 5;
 		
 		if (racetier == 1) {
