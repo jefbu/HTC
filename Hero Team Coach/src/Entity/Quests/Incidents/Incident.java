@@ -169,6 +169,10 @@ public abstract class Incident {
 
 			if (roll < 26) {
 				quester.status = Status.WOUNDED;
+				quester.questCombat = 0;
+				quester.questSkill = 0;
+				quester.questIntelligence = 0;
+				quester.questPersonality = 0;
 				totalWounded.add(quester);
 			} else if (roll < 76) {
 				quester.questCombat -= random.nextInt(15);

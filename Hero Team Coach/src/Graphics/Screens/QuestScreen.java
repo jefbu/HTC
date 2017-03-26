@@ -87,17 +87,11 @@ public class QuestScreen extends JPanel {
 				if (GameScreen.questScreen.textFinished == true) {
 
 					if (GameScreen.questSequence == GameScreen.currentQuest.incidentList.size()) {
-						GameScreen.questSequence = 0;
-						GameScreen.questScreen.setVisible(false);
 						
-						for (int i = 0; i < GameScreen.questers.size(); i++) {
-
-							GameScreen.questers.get(i).levelUp();
-							GameScreen.questers.get(i).value = GameScreen.questers.get(i).calculateValue();
-
-						}
-						
-						GameScreen.teamOverviewScreen.setVisible(true);
+						GameScreen.questSequence = 0;						
+						GameScreen.setScreensInvisible();
+						GameScreen.questResultScreen.fillScreen();
+						GameScreen.questResultScreen.setVisible(true);
 
 					}
 
