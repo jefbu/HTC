@@ -88,20 +88,24 @@ public class QuestScreen extends JPanel {
 
 					if (GameScreen.questSequence == GameScreen.currentQuest.incidentList.size()) {
 						
-						GameScreen.questSequence = 0;						
+						GameScreen.questSequence = 0;	
+						GameScreen.runner = 0;
 						GameScreen.setScreensInvisible();
-						GameScreen.questResultScreen.fillScreen();
+						GameScreen.questScreen.textFinished = false;
+						GameScreen.questScreen.textLabel.timer.stop();
 						GameScreen.questResultScreen.setVisible(true);
+						GameScreen.questResultScreen.fillScreen();						
 
 					}
 
 					else
+						GameScreen.questScreen.textFinished = false;
 						GameScreen.currentQuest.incidentList.get(GameScreen.questSequence).outcome();
-
+					
 				}
 
 				else
-					GameScreen.questScreen.textLabel.timer.setDelay(1);
+					GameScreen.questScreen.textLabel.timer.setDelay(0);
 
 			}
 		}); 
@@ -120,6 +124,9 @@ public class QuestScreen extends JPanel {
 
 	public void initiate() {
 
+		GameScreen.questScreen.textFinished = false;
+		GameScreen.runner = 0;
+		
 		GameScreen.questers.clear();
 
 		for (int i = 0; i < TeamRoster.teamRosterList.size(); i++) {

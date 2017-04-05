@@ -22,13 +22,17 @@ public class QuestInitiationScreen extends JPanel {
 	JPanel centrePanel;
 	JTextArea textArea;
 	JButton advanceButton;
-	Timer timer;
+	Timer initiationTimer;
 	ActionListener outcomeAction;
+	public boolean textFinished;
 	
 	
 	public QuestInitiationScreen() {
 		
 		super();
+		
+		textFinished = false;
+		
 		setPreferredSize(new Dimension(GameScreen.WIDTH, GameScreen.HEIGHT));
 		setBackground(GameScreen.mediumColor);
 		setLayout(new FlowLayout(FlowLayout.CENTER, 20, 20));
@@ -49,7 +53,16 @@ public class QuestInitiationScreen extends JPanel {
 		
 			advanceButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					
+					if (textFinished == true) {
+					
+					initiationTimer.stop();
+					GameScreen.runner = 0;
 					GameScreen.questScreen.initiate();
+					
+				} else {
+					initiationTimer.setDelay(0);
+				}
 				}
 			});;
 		
@@ -77,13 +90,15 @@ public class QuestInitiationScreen extends JPanel {
 	
 	public void initiate() {	
 		
+		GameScreen.runner = 0;
+		textFinished = false;
 		GameScreen.questInitiationScreen.setVisible(true);
-		rollText(GameScreen.currentQuest.introduction, textArea);		
+		rollInitialText(GameScreen.currentQuest.introduction, textArea);		
 		
 	}
 
 	
-	public void rollText(String input, JTextArea textArea) {
+	public void rollInitialText(String input, JTextArea textArea) {
 
 		outcomeAction = new ActionListener() {
 
@@ -98,8 +113,8 @@ public class QuestInitiationScreen extends JPanel {
 					
 					catch (Exception e1) {
 
-						GameScreen.questScreen.textFinished = true;
-						timer.stop();
+						textFinished = true;
+						initiationTimer.stop();
 						GameScreen.runner = 0;
 						
 					}
@@ -108,8 +123,8 @@ public class QuestInitiationScreen extends JPanel {
 
 		};
 
-		timer = new Timer(15, outcomeAction);
-		timer.start();
+		initiationTimer = new Timer(15, outcomeAction);
+		initiationTimer.start();
 
 	}
 

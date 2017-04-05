@@ -41,6 +41,7 @@ public abstract class Incident {
 	public void initiate() {
 
 		GameScreen.questScreen.textFinished = false;
+		GameScreen.runner = 0;
 
 		Random random = new Random();
 
