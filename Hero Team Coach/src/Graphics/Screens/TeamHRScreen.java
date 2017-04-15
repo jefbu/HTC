@@ -76,6 +76,30 @@ public class TeamHRScreen extends TeamScreen {
 	int cost;
 
 	JPanel applicantsPanel;
+	
+	JLabel firstApplicantNameLabel;
+	JLabel secondApplicantNameLabel;
+	JLabel thirdApplicantNameLabel;
+	JLabel fourthApplicantNameLabel;
+	JLabel fifthApplicantNameLabel;
+	
+	JLabel firstApplicantJobLabel;
+	JLabel secondApplicantJobLabel;
+	JLabel thirdApplicantJobLabel;
+	JLabel fourthApplicantJobLabel;
+	JLabel fifthApplicantJobLabel;
+	
+	JLabel firstApplicantValueLabel;
+	JLabel secondApplicantValueLabel;
+	JLabel thirdApplicantValueLabel;
+	JLabel fourthApplicantValueLabel;
+	JLabel fifthApplicantValueLabel;
+	
+	JButton firstApplicantContractButton;
+	JButton secondApplicantContractButton;
+	JButton thirdApplicantContractButton;
+	JButton fourthApplicantContractButton;
+	JButton fifthApplicantContractButton;
 
 	ImageLoader imageLoader = new ImageLoader();
 
@@ -646,7 +670,7 @@ public class TeamHRScreen extends TeamScreen {
 		centrePanel.add(costPanel);
 
 		applicantsPanel = new JPanel();
-		applicantsPanel.setPreferredSize(new Dimension(1000, 300));
+		applicantsPanel.setPreferredSize(new Dimension(1000, 315));
 		applicantsPanel.setBorder(new LineBorder(GameScreen.borderColor, 2, true));
 		applicantsPanel.setBackground(GameScreen.smallPanel);
 		applicantsPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 7));
@@ -660,34 +684,194 @@ public class TeamHRScreen extends TeamScreen {
 		firstApplicantPanel.setPreferredSize(new Dimension(900, 50));
 		firstApplicantPanel.setBackground(GameScreen.tableRow2);
 		firstApplicantPanel.setBorder(new LineBorder(GameScreen.borderColor, 1, true));
+		firstApplicantPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
+		
+			JPanel firstApplicantNamePanel = new JPanel();
+			firstApplicantNamePanel.setPreferredSize(new Dimension (200, 40));
+			firstApplicantNamePanel.setBackground(GameScreen.smallPanel);
+			firstApplicantNamePanel.setBorder(new LineBorder(GameScreen.borderColor, 1, false));
+			firstApplicantPanel.add(firstApplicantNamePanel);
+			
+				firstApplicantNameLabel = new JLabel();
+				firstApplicantNamePanel.add(firstApplicantNameLabel);
+			
+			JPanel firstApplicantJobPanel = new JPanel();
+			firstApplicantJobPanel.setPreferredSize(new Dimension (200, 40));
+			firstApplicantJobPanel.setBackground(GameScreen.smallPanel);
+			firstApplicantJobPanel.setBorder(new LineBorder(GameScreen.borderColor, 1, false));
+			firstApplicantPanel.add(firstApplicantJobPanel);	
+				
+				firstApplicantJobLabel = new JLabel();
+				firstApplicantJobPanel.add(firstApplicantJobLabel);
+			
+			JPanel firstApplicantValuePanel = new JPanel();
+			firstApplicantValuePanel.setPreferredSize(new Dimension (200, 40));
+			firstApplicantValuePanel.setBackground(GameScreen.smallPanel);
+			firstApplicantValuePanel.setBorder(new LineBorder(GameScreen.borderColor, 1, false));
+			firstApplicantPanel.add(firstApplicantValuePanel);	
+			
+				firstApplicantValueLabel = new JLabel();
+				firstApplicantValuePanel.add(firstApplicantValueLabel);
+			
+			firstApplicantContractButton  = new JButton();
+			firstApplicantContractButton.setPreferredSize(new Dimension(270, 40));
+			firstApplicantPanel.add(firstApplicantContractButton);
 
 		applicantsPanel.add(firstApplicantPanel);
 
 		JPanel secondApplicantPanel = new JPanel();
-		secondApplicantPanel.setPreferredSize(new Dimension(900, 45));
+		secondApplicantPanel.setPreferredSize(new Dimension(900, 50));
 		secondApplicantPanel.setBackground(GameScreen.tableRow2);
 		secondApplicantPanel.setBorder(new LineBorder(GameScreen.borderColor, 1, true));
+		secondApplicantPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
+		
+			JPanel secondApplicantNamePanel = new JPanel();
+			secondApplicantNamePanel.setPreferredSize(new Dimension (200, 40));
+			secondApplicantNamePanel.setBackground(GameScreen.smallPanel);
+			secondApplicantNamePanel.setBorder(new LineBorder(GameScreen.borderColor, 1, false));
+			secondApplicantPanel.add(secondApplicantNamePanel);
+		
+				secondApplicantNameLabel = new JLabel();
+				secondApplicantNamePanel.add(secondApplicantNameLabel);
+			
+			JPanel secondApplicantJobPanel = new JPanel();
+			secondApplicantJobPanel.setPreferredSize(new Dimension (200, 40));
+			secondApplicantJobPanel.setBackground(GameScreen.smallPanel);
+			secondApplicantJobPanel.setBorder(new LineBorder(GameScreen.borderColor, 1, false));
+			secondApplicantPanel.add(secondApplicantJobPanel);	
+				
+				secondApplicantJobLabel = new JLabel();
+				secondApplicantJobPanel.add(secondApplicantJobLabel);
+				
+			JPanel secondApplicantValuePanel = new JPanel();
+			secondApplicantValuePanel.setPreferredSize(new Dimension (200, 40));
+			secondApplicantValuePanel.setBackground(GameScreen.smallPanel);
+			secondApplicantValuePanel.setBorder(new LineBorder(GameScreen.borderColor, 1, false));
+			secondApplicantPanel.add(secondApplicantValuePanel);
+			
+				secondApplicantValueLabel = new JLabel();
+				secondApplicantValuePanel.add(secondApplicantValueLabel);
+			
+			secondApplicantContractButton  = new JButton();
+			secondApplicantContractButton.setPreferredSize(new Dimension(270, 40));
+			secondApplicantPanel.add(secondApplicantContractButton);
 
 		applicantsPanel.add(secondApplicantPanel);
 
 		JPanel thirdApplicantPanel = new JPanel();
-		thirdApplicantPanel.setPreferredSize(new Dimension(900, 45));
+		thirdApplicantPanel.setPreferredSize(new Dimension(900, 50));
 		thirdApplicantPanel.setBackground(GameScreen.tableRow2);
 		thirdApplicantPanel.setBorder(new LineBorder(GameScreen.borderColor, 1, true));
+		thirdApplicantPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
+		
+			JPanel thirdApplicantNamePanel = new JPanel();
+			thirdApplicantNamePanel.setPreferredSize(new Dimension (200, 40));
+			thirdApplicantNamePanel.setBackground(GameScreen.smallPanel);
+			thirdApplicantNamePanel.setBorder(new LineBorder(GameScreen.borderColor, 1, false));
+			thirdApplicantPanel.add(thirdApplicantNamePanel);
+		
+				thirdApplicantNameLabel = new JLabel();
+				thirdApplicantNamePanel.add(thirdApplicantNameLabel);
+			
+			JPanel thirdApplicantJobPanel = new JPanel();
+			thirdApplicantJobPanel.setPreferredSize(new Dimension (200, 40));
+			thirdApplicantJobPanel.setBackground(GameScreen.smallPanel);
+			thirdApplicantJobPanel.setBorder(new LineBorder(GameScreen.borderColor, 1, false));
+			thirdApplicantPanel.add(thirdApplicantJobPanel);				
+			
+				thirdApplicantJobLabel = new JLabel();
+				thirdApplicantJobPanel.add(thirdApplicantJobLabel);
+				
+			JPanel thirdApplicantValuePanel = new JPanel();
+			thirdApplicantValuePanel.setPreferredSize(new Dimension (200, 40));
+			thirdApplicantValuePanel.setBackground(GameScreen.smallPanel);
+			thirdApplicantValuePanel.setBorder(new LineBorder(GameScreen.borderColor, 1, false));
+			thirdApplicantPanel.add(thirdApplicantValuePanel);
+				
+				thirdApplicantValueLabel = new JLabel();
+				thirdApplicantValuePanel.add(thirdApplicantValueLabel);
+				
+			thirdApplicantContractButton  = new JButton();
+			thirdApplicantContractButton.setPreferredSize(new Dimension(270, 40));
+			thirdApplicantPanel.add(thirdApplicantContractButton);
 
 		applicantsPanel.add(thirdApplicantPanel);
 
 		JPanel fourthApplicantPanel = new JPanel();
-		fourthApplicantPanel.setPreferredSize(new Dimension(900, 45));
+		fourthApplicantPanel.setPreferredSize(new Dimension(900, 50));
 		fourthApplicantPanel.setBackground(GameScreen.tableRow2);
 		fourthApplicantPanel.setBorder(new LineBorder(GameScreen.borderColor, 1, true));
+		fourthApplicantPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
+		
+			JPanel fourthApplicantNamePanel = new JPanel();
+			fourthApplicantNamePanel.setPreferredSize(new Dimension (200, 40));
+			fourthApplicantNamePanel.setBackground(GameScreen.smallPanel);
+			fourthApplicantNamePanel.setBorder(new LineBorder(GameScreen.borderColor, 1, false));
+			fourthApplicantPanel.add(fourthApplicantNamePanel);
+		
+				fourthApplicantNameLabel = new JLabel();
+				fourthApplicantNamePanel.add(fourthApplicantNameLabel);
+				
+			JPanel fourthApplicantJobPanel = new JPanel();
+			fourthApplicantJobPanel.setPreferredSize(new Dimension (200, 40));
+			fourthApplicantJobPanel.setBackground(GameScreen.smallPanel);
+			fourthApplicantJobPanel.setBorder(new LineBorder(GameScreen.borderColor, 1, false));
+			fourthApplicantPanel.add(fourthApplicantJobPanel);
+			
+				fourthApplicantJobLabel = new JLabel();
+				fourthApplicantJobPanel.add(fourthApplicantJobLabel);
+				
+			JPanel fourthApplicantValuePanel = new JPanel();
+			fourthApplicantValuePanel.setPreferredSize(new Dimension (200, 40));
+			fourthApplicantValuePanel.setBackground(GameScreen.smallPanel);
+			fourthApplicantValuePanel.setBorder(new LineBorder(GameScreen.borderColor, 1, false));
+			fourthApplicantPanel.add(fourthApplicantValuePanel);
+			
+				fourthApplicantValueLabel = new JLabel();
+				fourthApplicantValuePanel.add(fourthApplicantValueLabel);
+				
+			fourthApplicantContractButton  = new JButton();
+			fourthApplicantContractButton.setPreferredSize(new Dimension(270, 40));
+			fourthApplicantPanel.add(fourthApplicantContractButton);
 
 		applicantsPanel.add(fourthApplicantPanel);
 
 		JPanel fifthApplicantPanel = new JPanel();
-		fifthApplicantPanel.setPreferredSize(new Dimension(900, 45));
+		fifthApplicantPanel.setPreferredSize(new Dimension(900, 50));
 		fifthApplicantPanel.setBackground(GameScreen.tableRow2);
 		fifthApplicantPanel.setBorder(new LineBorder(GameScreen.borderColor, 1, true));
+		fifthApplicantPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
+		
+			JPanel fifthApplicantNamePanel = new JPanel();
+			fifthApplicantNamePanel.setPreferredSize(new Dimension (200, 40));
+			fifthApplicantNamePanel.setBackground(GameScreen.smallPanel);
+			fifthApplicantNamePanel.setBorder(new LineBorder(GameScreen.borderColor, 1, false));
+			fifthApplicantPanel.add(fifthApplicantNamePanel);
+			
+				fifthApplicantNameLabel = new JLabel();
+				fifthApplicantNamePanel.add(fifthApplicantNameLabel);
+			
+			JPanel fifthApplicantJobPanel = new JPanel();
+			fifthApplicantJobPanel.setPreferredSize(new Dimension (200, 40));
+			fifthApplicantJobPanel.setBackground(GameScreen.smallPanel);
+			fifthApplicantJobPanel.setBorder(new LineBorder(GameScreen.borderColor, 1, false));
+			fifthApplicantPanel.add(fifthApplicantJobPanel);
+				
+				fifthApplicantJobLabel = new JLabel();
+				fifthApplicantJobPanel.add(fifthApplicantJobLabel);
+			
+			JPanel fifthApplicantValuePanel = new JPanel();
+			fifthApplicantValuePanel.setPreferredSize(new Dimension (200, 40));
+			fifthApplicantValuePanel.setBackground(GameScreen.smallPanel);
+			fifthApplicantValuePanel.setBorder(new LineBorder(GameScreen.borderColor, 1, false));
+			fifthApplicantPanel.add(fifthApplicantValuePanel);	
+					
+				fifthApplicantValueLabel = new JLabel();
+				fifthApplicantValuePanel.add(fifthApplicantValueLabel);
+			
+			fifthApplicantContractButton  = new JButton();
+			fifthApplicantContractButton.setPreferredSize(new Dimension(270, 40));
+			fifthApplicantPanel.add(fifthApplicantContractButton);
 
 		applicantsPanel.add(fifthApplicantPanel);
 
@@ -852,20 +1036,73 @@ public class TeamHRScreen extends TeamScreen {
 		}
 		
 		else {
+			maturityNumberLabel.setText(Integer.toString(0));
+			personalityNumberLabel.setText(Integer.toString(0));
 			hrMaturity = 0;
 			hrPersonality = 0;
 		}
 	}
 
 	public void searchApplicants() {
+		
+		applicants.clear();
+		firstApplicantNameLabel.setText("");
+		firstApplicantJobLabel.setText("");
+		firstApplicantValueLabel.setText("");
+		secondApplicantNameLabel.setText("");
+		secondApplicantJobLabel.setText("");
+		secondApplicantValueLabel.setText("");
+		thirdApplicantNameLabel.setText("");
+		thirdApplicantJobLabel.setText("");
+		thirdApplicantValueLabel.setText("");
+		fourthApplicantNameLabel.setText("");
+		fourthApplicantJobLabel.setText("");
+		fourthApplicantValueLabel.setText("");
+		fifthApplicantNameLabel.setText("");
+		fifthApplicantJobLabel.setText("");
+		fifthApplicantValueLabel.setText("");
 
 		int heroesFound = findOutAmountOfApplicants();
 
+		if (heroesFound != 0) {
+			
 		for (int i = 0; i < heroesFound; i++) {
 
 			applicants.add(HeroFactory.generateHRHero(hrMaturity, hrPersonality, specialisation,
 					seniority, strategy, trial));
 
+			}
+		
+		if (applicants.size() > 0) {
+			firstApplicantNameLabel.setText(applicants.get(0).name);
+			firstApplicantJobLabel.setText(applicants.get(0).job.name);
+			firstApplicantValueLabel.setText(Integer.toString(applicants.get(0).value));
+		}
+
+		if (applicants.size() > 1) {
+			secondApplicantNameLabel.setText(applicants.get(1).name);
+			secondApplicantJobLabel.setText(applicants.get(1).job.name);
+			secondApplicantValueLabel.setText(Integer.toString(applicants.get(1).value));
+		}
+		
+		if (applicants.size() > 2) {
+			thirdApplicantNameLabel.setText(applicants.get(2).name);
+			thirdApplicantJobLabel.setText(applicants.get(2).job.name);
+			thirdApplicantValueLabel.setText(Integer.toString(applicants.get(2).value));
+		}
+		
+		if (applicants.size() > 3) {
+			fourthApplicantNameLabel.setText(applicants.get(3).name);
+			fourthApplicantJobLabel.setText(applicants.get(3).job.name);
+			fourthApplicantValueLabel.setText(Integer.toString(applicants.get(3).value));
+		}
+		
+		if (applicants.size() > 4) {
+			fifthApplicantNameLabel.setText(applicants.get(4).name);
+			fifthApplicantJobLabel.setText(applicants.get(4).job.name);
+			fifthApplicantValueLabel.setText(Integer.toString(applicants.get(4).value));
+		}
+		
 		}
 
 	}
@@ -911,8 +1148,8 @@ public class TeamHRScreen extends TeamScreen {
 			break;
 		}
 
-		heroesFound = (heroesFound * hrMaturity) / (random.nextInt(100) + 1);
-		heroesFound = (heroesFound * hrPersonality) / (random.nextInt(100) + 1);
+		heroesFound = heroesFound + (hrMaturity / 30) - random.nextInt(3) ;
+		heroesFound = heroesFound + (hrPersonality / 50) - random.nextInt(2) ;
 
 		heroesFound = (heroesFound / 100);
 

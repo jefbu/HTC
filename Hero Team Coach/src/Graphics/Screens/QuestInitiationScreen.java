@@ -90,7 +90,9 @@ public class QuestInitiationScreen extends JPanel {
 	
 	public void initiate() {	
 		
+		textArea.setText("");
 		GameScreen.runner = 0;
+		GameScreen.questSequence = 0;
 		textFinished = false;
 		GameScreen.questInitiationScreen.setVisible(true);
 		rollInitialText(GameScreen.currentQuest.introduction, textArea);		

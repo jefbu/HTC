@@ -136,7 +136,26 @@ public class JobFactory {
 	
 	public static Job generateHRJob(Race race, int specialisation) {
 		
+		Random random = new Random();
+		int roll = random.nextInt(100) + 1;
+		int jobTier = 0;
+		
+		if (roll <66) jobTier = 1;
+		else if (roll < 86) jobTier = 2;
+		else if (roll < 96) jobTier = 3;
+		else jobTier = 4;
+		
 		switch(specialisation) {
+		
+		case 1: 
+			if (jobTier == 1) return Job.brute;
+			else if (jobTier == 2) return Job.commander;
+			else if (jobTier == 3) return Job.gendarme;
+			else return Job.fencer;
+			
+		case 2: return Job.engineer;
+		case 3: return Job.lawyer;
+		case 4: return Job.celebrity;
 
 		}
 		

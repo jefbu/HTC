@@ -122,9 +122,7 @@ public class HeroFactory {
 
 	    });
 
-	    for (int x = 0; x < tempHeroes.size(); x++) {
-	    System.out.println(tempHeroes.get(x).value);
-	    }
+
 	    return tempHeroes.get(0);
 			
 	}
@@ -137,7 +135,7 @@ public class HeroFactory {
 		heroQuality += hrPersonality / 20; // 1 - 10 + 0 - 10 + 0 - 5
 		heroQuality += strategy * 2; // 1 - 10 + 0 - 10 + 0 - 5 + 2 - 8 = 3 - 33
 		heroQuality = heroQuality / 10; // = 0 - 3
-		return heroQuality;
+		return heroQuality + 1;
 		
 	}
 	
